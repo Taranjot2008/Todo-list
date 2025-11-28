@@ -1,0 +1,216 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+:root {
+  --heading-font: 'Balsamiq Sans', cursive;
+  --secondary-font: 'Poppins';
+  --task-font: 'Helvetica';
+  --button-init: #ffa600;
+  --button-hover: #ff8c00;
+
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light;
+  color: black;
+  background-color: #ffffcc;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dark{
+  background-color: #242424;
+}
+
+
+.done-button{
+  padding: 10px 20px;
+  background-color: #6fcf97;
+  color: #ffffff;
+  font-size: var(--text-lg);
+  border-radius: 8px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  transition: all 0.5s, outline 0.1s ease-in-out;
+}
+
+.done-button:hover{
+  cursor: pointer;
+  transform: scale(1.04);
+}
+
+.marked-button{
+  background-color: #e26d5a;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: var(--text-lg);
+  border-radius: 8px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  transition: all 0.3s ease-in-out;
+  animation: markedButtonAnim 0.5s ease-in-out;
+}
+
+
+.marked-button:hover{
+  cursor: pointer;
+  transform: scale(1.04);
+}
+
+
+.markallSpan{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.markallBtn{
+  transition: all 0.3s ease-in-out;
+}
+
+i{
+  transition: all 0.3s ease-in-out;
+}
+
+.markallBtn:hover{
+  cursor: pointer;
+  background-color: var(--button-hover);
+}
+
+.markallBtn:hover > i{
+  font-size: var(--text-3xl);
+}
+
+.side-navbar-in {
+  animation: navAnimationIn 0.5s ease-in-out forwards;
+}
+
+.todo-list{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 1em;
+}
+
+@media (max-width: 425px) {
+  .todo-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.todo-div {
+  @apply max-sm:w-full;
+}
+/*.side-navbar-out {
+  animation: navAnimationOut 0.5s ease-in-out forwards;
+}*/
+
+@keyframes navAnimationIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes navAnimationOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+
+.submit-button {
+  @apply bg-(--button-init) text-xl font-medium text-white px-4 py-3
+            rounded-lg hover:bg-(--button-hover) hover:cursor-pointer transition-all duration-300
+            shadow-[0_4px_12px_#d4a37333] hover:translate-y-[-2px]
+}
+
+
+label {
+  font-family: var(--secondary-font);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: #333333;
+}
+
+
+.date-default {
+  color: #e74c3c;
+  font-size: 0.95rem;
+  margin-left: 0.25rem;
+}
+
+.expand-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #850a0a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 40px;              /* initial width */
+  transition: width 0.3s ease;
+  padding: 10px;
+}
+
+.expand-btn span {
+  margin-left: 8px;
+  display: none;
+  transition: display 0.2s ease;
+}
+
+.expand-btn:hover {
+  width: 130px;             /* expanded width */
+  justify-content: flex-start;
+  padding-left: 12px;
+  padding-right: 12px;
+  background-color: #a32b2b;
+}
+
+.expand-btn:hover span {
+  display: block;               /* show text */
+}
+
+@media (max-width: 768px) {
+  .expand-btn {
+    top: 5px;
+    right: 5px;
+    padding: 0px;
+    width: 35px;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+.nav-image:hover {
+  animation: ring-bell 1s ease-in-out;
+}
+
+@keyframes ring-bell {
+  0%   { transform: rotate(0deg); }
+  10%  { transform: rotate(30deg); }
+  20%  { transform: rotate(-25deg); }
+  30%  { transform: rotate(20deg); }
+  40%  { transform: rotate(-15deg); }
+  50%  { transform: rotate(10deg); }
+  60%  { transform: rotate(-5deg); }
+  70%  { transform: rotate(2deg); }
+  80%  { transform: rotate(-1deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.gradient-title {
+    @apply bg-gradient-to-r to-(--primary-blue) from-(--secondary-blue) text-transparent font-bold bg-clip-text;
+}
